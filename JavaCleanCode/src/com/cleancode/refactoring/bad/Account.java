@@ -34,23 +34,23 @@ public class Account {
 	public void deposit(BigDecimal amount) {
 		if (isClosed) {
 			return;
-		} 
-		if(isFrozen) {
+		}
+		if (isFrozen) {
 			this.isFrozen = false;
 		}
 		this.balance = this.balance.add(amount);
 	}
 
 	public void withdraw(BigDecimal amount) {
-		if(this.isClosed) {
+		if (this.isClosed) {
 			return;
 		}
-		if(!this.isVerified) {
+		if (!this.isVerified) {
 			return;
 		}
-        if(isFrozen) {
-            this.isFrozen = false;
-        }
+		if (isFrozen) {
+			this.isFrozen = false;
+		}
 		this.balance = this.balance.subtract(amount);
 	}
 

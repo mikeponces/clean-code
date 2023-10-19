@@ -1,4 +1,4 @@
-package com.cleancode.refactoring.bad;
+package com.cleancode.refactoring.good2;
 
 import static org.junit.Assert.assertEquals;
 

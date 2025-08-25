@@ -7,6 +7,7 @@ public class CartService {
 	private DiscountHandler discountHandler;
 	private DeliveryHandler deliveryHandler;
 	private EmailService emailService;
+	private static final int PRIORITY_THRESHOLD = 100;
 
 //	public double calculateTotal(Order order, Customer customer) {
 //		double baseTotal = sumItemPrices(order.getItems());
@@ -14,6 +15,18 @@ public class CartService {
 //		baseTotal = deliveryHandler.addDeliveryFee(customer, baseTotal);
 //		return baseTotal;
 //	}
+//	
+	private double sumItemPrices(List<Item> items) {
+		return 0;
+	}
+
+	private double applyVoucherDiscount(String voucher, double total) {
+		return 0;
+	}
+
+	private double addDeliveryFee(Customer customer, double total) {
+		return 0;
+	}
 
 	// 1. too many parameters
 	public String calculateTotal(List<Item> items, String voucher, String address, String emailAddress,
@@ -44,33 +57,15 @@ public class CartService {
 		return total;
 	}
 
-	public OrderPriority determineOrderPriority(double total, int priorityThreshold) {
-		if (total > priorityThreshold) {
-			return OrderPriority.PRIORITY;
-		}
-		return OrderPriority.STANDARD;
+	public OrderPriority determineOrderPriority(double total) {
+		return total > PRIORITY_THRESHOLD ? OrderPriority.PRIORITY : OrderPriority.STANDARD;
 	}
 
 	public void sendOrderConfirmation(Order order) {
 		emailService.sendOrderConfirmation(order);
 	}
 
-	private double addDeliveryFee(Customer customer, double total) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	private double addDeliveryFee(String address, double total, double deliveryRate) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	private double applyVoucherDiscount(String voucher, double total) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	private double sumItemPrices(List<Item> items) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -99,13 +94,13 @@ public class CartService {
 		}
 
 		if (order.getTotalPrice() > 100) {
-			return 0;
+			return 0; // free shipping
 		}
 
 		if (order.getCountry().equals("PH")) {
-			return 10;
+			return 10; // local shipping
 		}
-		
-		return 20;
+
+		return 20; // international shipping
 	}
 }

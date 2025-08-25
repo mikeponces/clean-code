@@ -25,7 +25,7 @@ public class Methods {
         return true;
     }
 	
-	public boolean registerNewUser(User user) {
+	public void registerNewUser(User user) {
 		if (user == null || user.getEmail() == null) {
             throw new IllegalArgumentException("Invalid user data");
         }
@@ -33,8 +33,6 @@ public class Methods {
 		userRepository.save(user);
 
         emailService.sendWelcomeEmail(user.getEmail());
-        
-        return true;
 	}
 	
 	class EmailService {

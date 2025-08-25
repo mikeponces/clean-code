@@ -17,6 +17,14 @@ public class Employee {
 	Role getRole() {
 		return role;
 	}
+	
+//	void sendEmail() {
+//		// TODO
+//	}
+//	
+//	void calculateYearBonus() {
+//		// TODO
+//	}
 }
 
 class EmailService {

@@ -4,11 +4,7 @@ import java.util.List;
 
 import com.cleancode.methods.Item;
 
-//class Cart {
-//    double calculateTotal(List<Item> items) {
-//        return 0; // some logic
-//    }
-//}
+
 
 class Cart {
     private List<PricingRule> pricingRules;
@@ -38,6 +34,12 @@ class ExpressFee implements PricingRule {
 
 interface PricingRule {
 	double apply(double total);
+}
+
+class Cart {
+	double calculateTotal(List<Item> items) {
+	  return 0; // some logic
+	}
 }
 
 class PremiumCart extends Cart {
